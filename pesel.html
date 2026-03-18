@@ -1,0 +1,84 @@
+<head>
+  <title>mObywatel</title>
+  <meta charset="UTF-8" />
+  <meta
+    http-equiv="Cache-Control"
+    content="no-cache, no-store, must-revalidate"
+  />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link rel="stylesheet" href="assets/pesel.css" />
+  <link rel="stylesheet" href="assets/main.css" />
+  <link rel="icon" type="image/x-icon" href="assets/images/logo.png" />
+  <link rel="apple-touch-icon" href="assets/images/logo.png" />
+  <link rel="shortcut icon" href="assets/images/logo.png" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=0.8, user-scalable=no"
+  />
+  <meta name="mobile-web-app-capable" content="yes" />
+</head>
+<body>
+  <div class="top_grid_fixed">
+    <div class="action_grid_fixed">
+      <img src="assets/images/back_blue.png" class="back_img_fixed" />
+      <p onclick="sendTo('card')" class="back_text_fixed">mDowód</p>
+    </div>
+    <p class="title_text_fixed">Zastrzeż PESEL</p>
+    <img src="assets/images/help.png" class="help_img_fixed" />
+  </div>
+  <div class="bottom_bar">
+    <div class="bottom_bar_grid">
+      <div class="bottom_element_grid" send="home">
+        <div class="bottom_element_image home_open"></div>
+        <p class="bottom_element_text open">Pulpit</p>
+      </div>
+      <div class="bottom_element_grid" send="documents">
+        <div class="bottom_element_image documents"></div>
+        <p class="bottom_element_text">Dokumenty</p>
+      </div>
+      <div class="bottom_element_grid" send="services">
+        <div class="bottom_element_image services"></div>
+        <p class="bottom_element_text">Usługi</p>
+      </div>
+      <div class="bottom_element_grid" send="qr">
+        <div class="bottom_element_image qr"></div>
+        <p class="bottom_element_text">Kod QR</p>
+      </div>
+      <div class="bottom_element_grid" send="more">
+        <div class="bottom_element_image more"></div>
+        <p class="bottom_element_text">Więcej</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <img class="pesel_icon" src="assets/images/pesel_service.png" />
+    <p class="pesel_title">Twój PESEL jest niezastrzeżony</p>
+    <p class="pesel_description">
+      Zastrzeż PESEL, żeby nikt nie wykorzystał go bez Twojej wiedzy.
+    </p>
+    <div class="action_box">
+      <p class="action_box_text">Zastrzeż PESEL</p>
+      <button class="main_button">Zastrzeż</button>
+    </div>
+    <p class="category_title">Historia</p>
+    <div class="action_box_connected">
+      <div
+        class="action_box"
+        style="border-bottom: 1px solid rgb(228, 228, 228)"
+      >
+        <p class="action_box_text">Kto sprawdzał Twój PESEL</p>
+        <img class="action_arrow" src="assets/images/right_arrow.png" />
+      </div>
+      <div class="action_box">
+        <p class="action_box_text">Twoje zmiany</p>
+        <img class="action_arrow" src="assets/images/right_arrow.png" />
+      </div>
+    </div>
+  </div>
+  <script src="assets/bar.js"></script>
+  <script src="assets/manifest.js"></script>
+  <script src="assets/cache.js"></script>
+</body>
+

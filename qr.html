@@ -1,0 +1,69 @@
+<head>
+    <title>mObywatel</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="./assets/qr.css">
+    <link rel="stylesheet" href="./assets/main.css">
+    <link rel="icon" type="image/x-icon" href="./assets/images/logo.png">
+    <link rel="apple-touch-icon" href="./assets//images/logo.png">
+    <link rel="shortcut icon" href="./assets/images/logo.png">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+</head>
+<body>
+
+    <div class="bottom_bar">
+        <div class="bottom_bar_grid">
+            <div class="bottom_element_grid" send="home">
+                <div class="bottom_element_image home"></div>
+                <p class="bottom_element_text">Pulpit</p>
+            </div>
+            <div class="bottom_element_grid" send="documents">
+                <div class="bottom_element_image documents"></div>
+                <p class="bottom_element_text">Dokumenty</p>
+            </div>
+            <div class="bottom_element_grid" send="services">
+                <div class="bottom_element_image services"></div>
+                <p class="bottom_element_text">Usługi</p>
+            </div>
+            <div class="bottom_element_grid" send="qr">
+                <div class="bottom_element_image qr qr_open"></div>
+                <p class="bottom_element_text open">Kod QR</p>
+            </div>
+            <div class="bottom_element_grid" send="more">
+                <div class="bottom_element_image more"></div>
+                <p class="bottom_element_text">Więcej</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <p class="main_title">Kod QR</p>
+        <p class="description">Wybierz, co chcesz zrobić</p>
+        <div class="action_grid">
+            <div class="action" onclick="sendTo('scan')">
+                <img class="action_image" src="./assets/images/confirm.png">
+                <div class="action_text">
+                    <p class="action_title">Zeskanuj kod QR</p>
+                    <p class="action_subtitle">Zaloguj się lub potwierdź swoje dane.</p>
+                </div>
+                <img class="arrow" src="./assets/images/right_arrow_sharp.png">
+            </div>
+            <div class="action" onclick="sendTo('show')">
+                <img class="action_image" src="./assets/images/scan.png">
+                <div class="action_text">
+                    <p class="action_title">Pokaż kod QR</p>
+                    <p class="action_subtitle">Sprawdź dokument innej osoby.</p>
+                </div>
+                <img class="arrow" src="./assets/images/right_arrow_sharp.png">
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/bar.js"></script>
+    <script src="./assets/manifest.js"></script>
+    <script src="./assets/cache.js"></script>
+</body>

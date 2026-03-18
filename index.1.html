@@ -1,0 +1,128 @@
+<!DOCTYPE >
+>
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    http-equiv="Cache-Control"
+    content="no-cache, no-store, must-revalidate"
+  />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link rel="stylesheet" href="assets/common.css" />
+  <link rel="stylesheet" href="assets/index.css" />
+  <link rel="stylesheet" href="assets/header.css" />
+  <link rel="stylesheet" href="assets/footer.css" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=0.8, user-scalable=no"
+  />
+  <title>fObywatel.xyz - Strona główna</title>
+</head>
+<body>
+  <div class="background_container">
+    <div class="background_gradient"></div>
+    <canvas class="background"></canvas>
+  </div>
+
+  <div class="header">
+    <div class="header_opacity"></div>
+    <img class="header_logo" src="assets/images/fobywatel.png" />
+    <img class="hamburger" src="assets/images/hamburger.png" />
+    <div class="header_holder">
+      <img class="x" src="assets/images/close.png" />
+      <div class="buttons header_buttons">
+        <div class="button" onclick="location.href = '/'">
+          <p class="button_text">Strona główna</p>
+          <div class="button_underline"></div>
+        </div>
+        <div
+          class="button"
+          onclick="window.open('https://discord.gg/fobywatel')"
+        >
+          <p class="button_text">Discord</p>
+          <div class="button_underline"></div>
+        </div>
+        <div class="login">
+          <div class="login_grid">
+            <p class="login_text">Zaloguj się</p>
+            <img class="login_arrow" src="assets/images/arrow.png" />
+          </div>
+          <p class="login_action" onclick="location.href = '/dashboard'">
+            Panel
+          </p>
+          <p
+            class="login_action"
+            onclick="localStorage.removeItem('token'); location.href = '/'"
+          >
+            Wyloguj się
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info">
+    <p class="title">FOBYWATEL</p>
+    <p class="description description_top">
+      Narzędzie edukacyjne przypominające
+      <span class="highlight">mObywatela</span>, przydatny do celów filmowych.
+    </p>
+    <p
+      class="info_login"
+      onclick="location.href = 'https://discord.gg/fobywatel'"
+    >
+      Zakup
+    </p>
+  </div>
+
+  <img
+    class="scroll"
+    src="assets/images/scroll.png"
+    onclick="location.href = '#buy'"
+  />
+
+  <div class="bottom_wrapper wrapper">
+    <div class="info_bottom" id="buy">
+      <div class="bottom_text">
+        <p class="title" id="buy">ZAKUP</p>
+        <p class="description">
+          Zakup fObywatela na naszym discordzie i uzyskaj dostęp do panelu.
+        </p>
+      </div>
+      <div class="guide">
+        <div class="guide_element">
+          <p class="guide_number">1</p>
+          <p class="guide_text">Dołącz do naszego discorda</p>
+        </div>
+        <div class="line"></div>
+        <div class="guide_element">
+          <p class="guide_number">2</p>
+          <p class="guide_text">Wybierz plan</p>
+        </div>
+        <div class="line"></div>
+        <div class="guide_element">
+          <p class="guide_number">3</p>
+          <p class="guide_text">Otwórz nowego ticketa</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p class="footer_title">FOBYWATEL</p>
+    <div class="buttons">
+      <div class="button" onclick="location.href = '/'">
+        <p class="button_text">Strona główna</p>
+        <div class="button_underline"></div>
+      </div>
+      <div class="button" onclick="window.open('https://discord.gg/fobywatel')">
+        <p class="button_text">Discord</p>
+        <div class="button_underline"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/header.js"></script>
+</body>
+<>
+
