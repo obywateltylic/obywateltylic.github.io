@@ -94,9 +94,9 @@ function loadReadyData(result) {
   setData("surname", result["surname"].toUpperCase());
   setData("nationality", result["nationality"].toUpperCase());
   // setData("fathersName", result["fathersName"].toUpperCase());
-  setData("fathersName", "WOJCIECH");
+  setData("fathersName", "DARIUSZ");
   // setData("mothersName", result["mothersName"].toUpperCase());
-  setData("mothersName", "AGATA");
+  setData("mothersName", "BEATA");
   setData("birthday", day + "." + month + "." + birthdayDate.getFullYear());
   setData("familyName", result["familyName"]);
   setData("sex", textSex);
