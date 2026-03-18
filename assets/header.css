@@ -1,0 +1,282 @@
+
+.header{
+    height: 150px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+}
+
+.header_title{
+    position: absolute;
+    left: 100px;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: max-content;
+    font-weight: 900;
+    font-size: 25px;
+}
+
+.buttons{
+    position: absolute;
+    right: 100px;
+    height: max-content;
+    width: max-content;
+    top: 45px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+}
+
+.button{
+    user-select: none;
+    cursor: pointer;
+    width: max-content;
+    height: max-content;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: max-content max-content;
+    margin-left: 30px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.header_logo{
+    position: absolute;
+    width: 60px;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    left: 90px;
+}
+
+.button_text{
+    font-weight: 600;
+    font-size: 17px;
+    margin-bottom: 10px;
+    margin-top: auto;
+    height: max-content;
+}
+
+.button_underline{
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    background-color: white;
+    height: 2px;
+    margin-bottom: 1px;
+}
+
+.button:hover .button_underline{
+    margin-bottom: 0px;
+    width: calc(100% + 30px);
+    margin-left: -15px;
+}
+
+.login{
+    user-select: none;
+    cursor: pointer;
+    width: max-content;
+    max-height: 40px;
+    margin-top: 0px;
+    margin-left: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 2px solid white;
+    border-radius: 20px;
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: 100%;
+    grid-auto-flow: row;
+    grid-auto-rows: 40px;
+}
+
+.login_grid{
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: 100%;
+    height: 40px;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login_text{
+    font-weight: 600;
+    font-size: 17px;
+    height: max-content;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: max-content;
+}
+
+.login_arrow{
+    display: none;
+    width: 25px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+}
+
+.login:hover{
+    background-color: white;
+}
+
+.login:hover .login_text{
+    color: black;
+}
+
+.login:hover .login_arrow{
+    filter: brightness(0);
+}
+
+.hamburger{
+    width: 45px;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: none;
+    position: absolute;
+    right: 5%;
+    transform: scale(-1, 1);
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+}
+
+.hamburger:hover{
+    opacity: 0.5;
+}
+
+.header_opacity{
+    background-color: black;
+    display: none;
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.x{
+    width: 30px;
+    display: none;
+    margin-top: 40px;
+    margin-right: 40px;
+    margin-left: auto;
+    user-select: none;
+    cursor: pointer;
+}
+
+.x:hover{
+    opacity: 0.5;
+}
+
+.login_active .login_arrow{
+    display: block;
+}
+
+.login_open{
+    max-height: 300px;
+}
+
+.login_open .login_arrow{
+    rotate: 180deg;
+}
+
+.login_open:hover{
+    background-color: transparent;
+}
+
+.login_open:hover .login_arrow{
+    filter: none;
+}
+
+.login_open:hover .login_text{
+    color: white;
+}
+
+.login_open .login_grid:hover{
+    opacity: 0.5;
+}
+
+.login_action{
+    width: 100%;
+    height: max-content;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.login_action:hover{
+    opacity: 0.5;
+}
+
+@media only screen and (max-width: 900px) {
+    .header_logo{
+        left: 5%;
+        width: 40px;
+    }
+
+    .header{
+        height: 100px;
+    }
+
+    .x{
+        display: block;
+    }
+
+    .hamburger{
+        display: block;
+    }
+
+    .header_open .header_opacity{
+        display: block;
+    }
+    
+    .header_holder{
+        background-color: var(--primary);
+        position: fixed;
+        top: 0;
+        right: -150%;
+        height: 100%;
+        width: 300px;
+        z-index: 2;
+    }
+
+    .header_open .header_holder{
+        right: 0;
+    }
+
+    .header_buttons{
+        grid-template-columns: 100%;
+        grid-auto-rows: max-content;
+        grid-auto-flow: row;
+        top: 150px;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
+
+    .header_open .button{
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        height: 50px;
+    }
+
+    .header_open .login{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

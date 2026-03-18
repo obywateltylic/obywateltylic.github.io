@@ -1,0 +1,33 @@
+.container{
+    width: 95%;
+    height: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+}
+
+.pesel_icon{
+    width: 90px;
+}
+
+.pesel_title{
+    margin-top: 25px;
+    font-weight: 600;
+    font-size: 40px;
+    margin-bottom: 0px;
+    line-height: 50px;
+}
+
+.pesel_description{
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 21px;
+    width: 90%;
+    opacity: 0.8;
+}
+
+.category_title{
+    margin-top: 25px;
+    font-weight: 500;
+    font-size: 22px;
+}

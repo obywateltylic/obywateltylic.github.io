@@ -1,0 +1,53 @@
+
+.container .confirm_info{
+    width: 100%;
+    margin-top: 80px;
+}
+
+.action_image{
+    width: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.action_box_connected{
+    margin-top: 10px;
+}
+
+.action_box_text{
+    width: 140%;
+    font-size: 20px;
+}
+
+.bottom_holder{
+    margin-bottom: 0px !important;
+}
+
+.action_box{
+    grid-template-columns: 12% 38% 50%;
+    box-shadow: none;
+    margin-top: 10px;
+}
+
+.box_image_grid{
+    display: grid;
+    height: max-content;
+    width: max-content;
+    margin-left: 0;
+    margin-right: auto;
+    grid-template-columns: max-content max-content;
+    margin-bottom: 10px;
+}
+
+.box_image_grid .box_value{
+    margin-top: auto;
+    margin-bottom: auto;
+    height: max-content;
+}
+
+.box_image{
+    width: 18px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 8px;
+}

@@ -1,0 +1,38 @@
+
+.container{
+    margin-top: 80px;
+}
+
+.action_box_connected{
+    box-shadow: none;
+}
+
+.action_image{
+    width: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.action_box{
+    grid-template-columns: 12% 38% 50%;
+    box-shadow: none;
+    margin-top: 25px;
+}
+
+.delete_action{
+    width: 100%;
+    height: 90px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.delete_action .action_box{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.delete_action .action_box_text{
+    margin-left: 0;
+    color: #ce2c20;
+}

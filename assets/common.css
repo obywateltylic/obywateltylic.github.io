@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+html{
+    scroll-behavior: smooth;
+}
+
+:root{
+    --wrapper: rgb(14, 14, 14);
+    --error: rgb(190, 34, 34);
+    --accent: rgb(114, 114, 114);
+    --error-dark: rgb(54, 7, 7);
+    --primary: rgb(12, 12, 12);
+    --border: 0.5px solid rgb(46, 46, 46);
+    --shadow: 0px 0px 4px rgb(12, 12, 12);
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgb(37, 37, 37);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(97, 97, 97);
+}
+
+*{
+    font-family: "Poppins", sans-serif;
+    color: white;
+    transition: 200ms;
+}
+
+.background_container{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    overflow: hidden;
+}
+
+.background_gradient{
+    background-color: var(--primary);
+    opacity: 0.5;
+    width: 100%;
+    height: 750px;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.highlight{
+    background: #b53c99;
+    background: linear-gradient(90deg,rgba(181, 60, 153, 1) 0%, rgba(224, 31, 102, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.background{
+    opacity: 0.6;
+    z-index: 1;
+    margin-top: 0;
+    width: 100%;
+    height: 770px;
+}
+
+.image_button{
+    width: max-content;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 45px;
+    border-radius: 10px;
+    border: 2px solid white;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+}
+
+.image_button_grid{
+    display: grid;
+    height: 100%;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: max-content max-content;
+}
+
+.image_button_image{
+    display: block;
+    width: 25px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+}
+
+.image_button_text{
+    width: max-content;
+    height: max-content;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.image_button:hover{
+    background-color: white;
+}
+
+.image_button:hover .image_button_image{
+    filter: brightness(0);
+}
+
+.image_button:hover .image_button_text{
+    color: black;
+}
+
+.input_holder{
+    width: calc(100% - 4px);
+    height: 45px;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.input_placeholder{
+    width: max-content;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: max-content;
+    pointer-events: none;
+}
+
+.input_error{
+    color: var(--error);
+    position: absolute;
+    top: 45px;
+    height: max-content;
+    margin-top: 5px;
+    margin-bottom: auto;
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0;
+}
+
+.input{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 45px;
+    border-bottom: 2px solid white;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.input:not(:placeholder-shown) ~ .input_placeholder{
+    font-size: 12px;
+    left: 1px;
+    bottom: 45px;
+}
+
+.input:focus ~ .input_placeholder{
+    font-size: 12px;
+    left: 1px;
+    bottom: 45px;
+}
+
+.error_shown ~ .input_error{
+    opacity: 1;
+}
+
+.error_shown{
+    border-color: var(--error);
+    color: var(--error);
+}
+
+.error_shown ~ .input_placeholder{
+    color: var(--error);
+}
+
+@media only screen and (max-width: 1000px) {
+    .image_button{
+        height: 45px;
+    }
+}
