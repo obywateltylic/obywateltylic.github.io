@@ -184,45 +184,76 @@ async function loadData() {
 }
 
 loadImage();
-async function loadImage() {
-  var db = await getDb();
-  var image = await getData(db, "image");
 
-  if (image) {
-    setImage(image.image);
+async function loadImage() {
+  const imageUrl = params.get("image");   
+
+  if (!imageUrl) {
+    console.warn("Brak parametru ?image= w URL");
+    return;
   }
 
-  console.log(params.get("image"));
-  fetch(params.get("image"), {
-    method: "GET",
-    headers: {
-      Authorization: "Client-ID e4d98a899c8c946",
-    },
-  })
-    .then((response) => response.blob())
-    .then((result) => {
-      var reader = new FileReader();
-      reader.readAsDataURL(result);
-      reader.onload = (event) => {
-        var base = event.target.result;
+  console.log("Parametr image:", imageUrl);
 
-        if (base !== image) {
-          setImage(base);
 
-          var data = {
-            data: "image",
-            image: base,
-          };
+  try {
+    const db = await getDb();
+    const saved = await getData(db, "image");
 
-          saveData(db, data);
-        }
-      };
-    });
+    if (saved?.image) {
+      setImage(saved.image);   
+    }
+  } catch (e) {
+    console.warn("Błąd odczytu cache z IndexedDB:", e);
+  }
+
+ 
+  setImage(imageUrl);
+
+  
+  cacheImageAsBase64(imageUrl);
 }
 
-function setImage(image) {
-  document.querySelector(".id_own_image").style.backgroundImage =
-    `url(${image})`;
+
+async function cacheImageAsBase64(url) {
+  try {
+    const response = await fetch(url, { 
+      method: "GET",
+      mode: "cors"   
+    });
+
+    if (!response.ok) throw new Error("Fetch nieudany: " + response.status);
+
+    const blob = await response.blob();
+    const reader = new FileReader();
+
+    reader.onload = async (event) => {
+      const base64 = event.target.result;
+
+      try {
+        const db = await getDb();
+        const data = { data: "image", image: base64 };
+        await saveData(db, data);
+        console.log("Obraz zapisany do cache jako base64");
+      } catch (e) {
+        console.warn("Nie udało się zapisać do IndexedDB:", e);
+      }
+    };
+
+    reader.readAsDataURL(blob);
+  } catch (err) {
+    console.warn("Nie udało się pobrać obrazu do cache:", err);
+   
+  }
+}
+
+function setImage(src) {
+  const element = document.querySelector(".id_own_image");
+  if (element) {
+    element.style.backgroundImage = `url(${src})`;
+  } else {
+    console.warn("Nie znaleziono elementu .id_own_image");
+  }
 }
 
 function setData(id, value) {
