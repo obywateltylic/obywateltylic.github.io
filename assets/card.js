@@ -4,7 +4,7 @@ var confirmElement = document.querySelector(".confirm");
 var time = document.getElementById("time");
 
 if (localStorage.getItem("update") == null) {
-  localStorage.setItem("update", "24.12.2024");
+  localStorage.setItem("update", "18.04.2026");
 }
 
 var date = new Date();
