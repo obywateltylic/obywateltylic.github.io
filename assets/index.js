@@ -1,7 +1,10 @@
+// ==================== ZMIENNE GLOBALNE ====================
+let sex = "m";                    // domyślnie mężczyzna
+
 // ==================== UPLOAD ZDJĘCIA - ImgBB ====================
 
-var upload = document.querySelector(".upload");
-var imageInput = document.createElement("input");
+const upload = document.querySelector(".upload");
+const imageInput = document.createElement("input");
 
 imageInput.type = "file";
 imageInput.accept = "image/jpeg,image/png,image/gif";
@@ -22,7 +25,6 @@ imageInput.addEventListener("change", async (event) => {
     const formData = new FormData();
     formData.append("image", file);
 
-    
     const IMGBB_API_KEY = "d96c7cacb366e5c9587da66fc7e4c5df";
 
     const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
@@ -41,7 +43,7 @@ imageInput.addEventListener("change", async (event) => {
       upload.classList.add("upload_loaded");
       upload.classList.remove("upload_loading");
 
-      console.log("Zdjęcie wgrane pomyślnie:", imageUrl);
+      console.log("✅ Zdjęcie wgrane pomyślnie:", imageUrl);
     } else {
       throw new Error(result.error?.message || "Nieznany błąd ImgBB");
     }
@@ -50,8 +52,17 @@ imageInput.addEventListener("change", async (event) => {
     console.error("Błąd uploadu:", error);
     upload.classList.remove("upload_loading");
     upload.classList.add("error_shown");
-    alert("Nie udało się wgrać zdjęcia.\nSprawdź połączenie internetowe i klucz ImgBB.");
+    alert("Nie udało się wgrać zdjęcia.\nSprawdź połączenie i klucz ImgBB.");
   }
+});
+
+// ==================== WYBÓR PŁCI ====================
+
+document.querySelectorAll(".selector_option").forEach((option) => {
+  option.addEventListener("click", () => {
+    sex = option.id;                                   // ← aktualizacja zmiennej sex
+    document.querySelector(".selected_text").innerHTML = option.innerHTML;
+  });
 });
 
 // ==================== PRZYCISK "WEJDŹ" ====================
@@ -98,3 +109,14 @@ document.querySelector(".go").addEventListener("click", () => {
     forwardToId(params);
   }
 });
+
+// ==================== POMOCNICZE FUNKCJE ====================
+
+function isEmpty(value) {
+  let pattern = /^\s*$/;
+  return pattern.test(value);
+}
+
+function forwardToId(params) {
+  location.href = "card.html?" + params.toString();   // ← ważne: card.html
+}
