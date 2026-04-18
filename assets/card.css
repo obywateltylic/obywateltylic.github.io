@@ -81,14 +81,14 @@ body .bottom_bar{
 }
 
 .eagle_text{
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 200;
     margin-top: 0px;
     margin-bottom: auto;
     height: max-content;
     line-height: 17px;
     margin-left: 1px;
-    color: gray;
+    color: black;
 }
 
 .action_grid{
@@ -120,7 +120,7 @@ body .bottom_bar{
 }
 
 .data_value{
-    color: #52575f;
+    color: black;
     height: max-content;
     margin-top: auto;
     margin-bottom: auto;
