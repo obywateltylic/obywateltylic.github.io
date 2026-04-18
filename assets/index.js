@@ -1,79 +1,67 @@
-var selector = document.querySelector(".selector_box");
-selector.addEventListener("click", () => {
-  if (selector.classList.contains("selector_open")) {
-    selector.classList.remove("selector_open");
-  } else {
-    selector.classList.add("selector_open");
-  }
-});
 
-document.querySelectorAll(".date_input").forEach((element) => {
-  element.addEventListener("click", () => {
-    document.querySelector(".date").classList.remove("error_shown");
-  });
-});
-
-var sex = "m";
-
-document.querySelectorAll(".selector_option").forEach((option) => {
-  option.addEventListener("click", () => {
-    sex = option.id;
-    document.querySelector(".selected_text").innerHTML = option.innerHTML;
-  });
-});
 
 var upload = document.querySelector(".upload");
-
 var imageInput = document.createElement("input");
 imageInput.type = "file";
-imageInput.accept = ".jpeg,.png,.gif";
-
-document.querySelectorAll(".input_holder").forEach((element) => {
-  var input = element.querySelector(".input");
-  input.addEventListener("click", () => {
-    element.classList.remove("error_shown");
-  });
-});
+imageInput.accept = "image/jpeg,image/png,image/gif";
 
 upload.addEventListener("click", () => {
   imageInput.click();
   upload.classList.remove("error_shown");
 });
 
-imageInput.addEventListener("change", (event) => {
-  upload.classList.remove("upload_loaded");
+imageInput.addEventListener("change", async (event) => {
+  const file = imageInput.files[0];
+  if (!file) return;
+
+ 
+  upload.classList.remove("upload_loaded", "error_shown");
   upload.classList.add("upload_loading");
 
-  upload.removeAttribute("selected");
+  try {
+    const formData = new FormData();
+    formData.append("image", file);
 
-  var file = imageInput.files[0];
-  var data = new FormData();
-  data.append("image", file);
+    
+    const IMG BB_API_KEY = "d96c7cacb366e5c9587da66fc7e4c5df";   
 
-  fetch("	https://api.imgur.com/3/image", {
-    method: "POST",
-    headers: {
-      Authorization: "Client-ID e4d98a899c8c946",
-    },
-    body: data,
-  })
-    .then((result) => result.json())
-    .then((response) => {
-      var url = response.data.link;
-      upload.classList.remove("error_shown");
-      upload.setAttribute("selected", url);
+    const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMG BB_API_KEY}`, {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (result.status === 200 && result.data?.url) {
+      const imageUrl = result.data.url;        
+
+      upload.setAttribute("selected", imageUrl);
+      upload.querySelector(".upload_uploaded").src = imageUrl;
+
       upload.classList.add("upload_loaded");
       upload.classList.remove("upload_loading");
-      upload.querySelector(".upload_uploaded").src = url;
-    });
+
+      console.log("Zdjęcie wgrane pomyślnie:", imageUrl);
+    } else {
+      throw new Error(result.error?.message || "Nieznany błąd ImgBB");
+    }
+
+  } catch (error) {
+    console.error("Błąd uploadu:", error);
+    upload.classList.remove("upload_loading");
+    upload.classList.add("error_shown");
+
+    alert("Nie udało się wgrać zdjęcia.\nSprawdź połączenie i klucz API ImgBB.");
+  }
 });
 
 document.querySelector(".go").addEventListener("click", () => {
   var empty = [];
-
   var params = new URLSearchParams();
 
   params.set("sex", sex);
+
+ 
   if (!upload.hasAttribute("selected")) {
     empty.push(upload);
     upload.classList.add("error_shown");
@@ -81,21 +69,23 @@ document.querySelector(".go").addEventListener("click", () => {
     params.set("image", upload.getAttribute("selected"));
   }
 
+  
   const day = document.getElementById("day");
   const month = document.getElementById("month");
   const year = document.getElementById("year");
 
-  [day, month, year].forEach((input) => {
-    if (isEmpty(input.value)) {
-      dateEmpty = true;
-    } else {
-      params.set(input.id, input.value);
-    }
-  });
+  if (!day.value || !month.value || !year.value) {
+    empty.push(document.querySelector(".date"));   
+    document.querySelector(".date").classList.add("error_shown");
+  } else {
+    params.set("day", day.value);
+    params.set("month", month.value);
+    params.set("year", year.value);
+  }
 
+ 
   document.querySelectorAll(".input_holder").forEach((element) => {
     var input = element.querySelector(".input");
-
     if (isEmpty(input.value)) {
       empty.push(element);
       element.classList.add("error_shown");
@@ -104,27 +94,9 @@ document.querySelector(".go").addEventListener("click", () => {
     }
   });
 
-  if (empty.length != 0) {
-    empty[0].scrollIntoView();
+  if (empty.length > 0) {
+    empty[0].scrollIntoView({ behavior: "smooth" });
   } else {
     forwardToId(params);
-  }
-});
-
-function isEmpty(value) {
-  let pattern = /^\s*$/;
-  return pattern.test(value);
-}
-
-function forwardToId(params) {
-  location.href = "/id?" + params;
-}
-
-var guide = document.querySelector(".guide_holder");
-guide.addEventListener("click", () => {
-  if (guide.classList.contains("unfolded")) {
-    guide.classList.remove("unfolded");
-  } else {
-    guide.classList.add("unfolded");
   }
 });
