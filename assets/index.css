@@ -315,3 +315,130 @@ body {
 .submit-btn:hover {
     opacity: 0.85;
 }
+
+.guide_holder{
+    width: 90%;
+    max-height: 50px;
+    margin: 20px auto;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    background-color: #ffffff;
+    transition: 200ms;
+}
+
+.top_holder{
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.guide_title{
+    font-size: 18px;
+    margin-left: 20px;
+    font-weight: 600;
+    color: var(--main);
+    display: flex;
+    align-items: center;
+}
+
+.arrow{
+    width: 22px;
+    height: 22px;
+    margin-right: 20px;
+    margin-left: auto;
+    transition: 200ms;
+    transform: translateY(-1000px);
+    filter: drop-shadow(0px 1000px var(--main));
+}
+
+.guide_text{
+    margin: 15px 20px 20px 20px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.unfolded{
+    max-height: 700px;
+}
+
+.unfolded .arrow{
+    rotate: 90deg;
+}
+
+/* Płeć – selector */
+
+.selector_box{
+    margin-top: 5px;
+    margin-bottom: 25px;
+    max-height: 45px;
+    border: 2px solid var(--border);
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    background-color: #f9fafb;
+    transition: 200ms;
+}
+
+.selected_grid{
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    height: 45px;
+    grid-template-columns: 70% 30%;
+}
+
+.selector_text{
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: 600;
+    color: var(--main);
+    opacity: 0.8;
+}
+
+.selected_arrow{
+    width: 22px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    transition: 200ms;
+    transform: translateY(1000px);
+    filter: drop-shadow(0px -1000px var(--main));
+    opacity: 0.7;
+}
+
+.option_box{
+    display: grid;
+    width: 90%;
+    margin: 0 auto;
+    grid-auto-rows: 45px;
+}
+
+.selector_option{
+    height: 45px;
+    line-height: 45px;
+    color: var(--main);
+    opacity: 0.8;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.selector_option:hover{
+    background-color: #eef2f7;
+    opacity: 1;
+}
+
+.selector_open{
+    max-height: 400px;
+}
+
+.selector_open .selected_arrow{
+    rotate: 180deg;
+}
+
