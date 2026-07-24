@@ -1,8 +1,8 @@
 alert("Do użycia w celach edukacyjnych");
-// ==================== ZMIENNE GLOBALNE ====================
+// zmienne globalne
 let sex = "m";                    // domyślnie mężczyzna
 
-// ==================== UPLOAD ZDJĘCIA - ImgBB ====================
+// zdjęcie
 
 const upload = document.querySelector(".upload");
 const imageInput = document.createElement("input");
@@ -57,7 +57,7 @@ imageInput.addEventListener("change", async (event) => {
   }
 });
 
-// ==================== WYBÓR PŁCI ====================
+// wybór płci
 const selectorBox = document.querySelector(".selector_box");
 const selectedGrid = selectorBox.querySelector(".selected_grid");
 const selectedText = selectorBox.querySelector(".selected_text");
@@ -88,7 +88,7 @@ guideTop.addEventListener("click", () => {
     guideHolder.classList.toggle("unfolded");
 });
 
-// ==================== PRZYCISK "WEJDŹ" ====================
+// przycisk wejdź
 
 document.querySelector(".go").addEventListener("click", () => {
   var empty = [];
@@ -133,7 +133,7 @@ document.querySelector(".go").addEventListener("click", () => {
   }
 });
 
-// ==================== POMOCNICZE FUNKCJE ====================
+// funkcje
 
 function isEmpty(value) {
   let pattern = /^\s*$/;
