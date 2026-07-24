@@ -74,8 +74,8 @@ function loadReadyData(result) {
   birthdayDate.setFullYear(result["year"], result["month"] - 1, result["day"]);
 
   var sex = result["sex"];
-  let day = birthdayDate.getDay();
-  let month = birthdayDate.getMonth();
+  let day = birthdayDate.getDate();
+  let month = birthdayDate.getMonth() + 1;
   let year = birthdayDate.getFullYear();
 
   var textSex = sex === "m" ? "Mężczyzna" : "Kobieta";
@@ -134,8 +134,11 @@ function loadReadyData(result) {
   document.querySelector(".home_date").innerHTML = localStorage.getItem("homeDate");
 
   // PESEL
+day = day.toString().padStart(2, "0");
+month = month.toString().padStart(2, "0");
+var pesel = generatePesel(year, month, day, sex);
+setData("pesel", pesel);
 function generatePesel(year, month, day, sex) {
-  // Zakodowanie miesiąca zgodnie z zasadami PESEL
   let mm = parseInt(month, 10);
 
   if (year >= 2000 && year < 2100) mm += 20;
@@ -143,23 +146,17 @@ function generatePesel(year, month, day, sex) {
   else if (year >= 2200 && year < 2300) mm += 60;
   else if (year >= 1800 && year < 1900) mm += 80;
 
-  // Formatowanie
   const yy = year.toString().substring(2);
   const mmStr = mm.toString().padStart(2, "0");
   const ddStr = day.toString().padStart(2, "0");
 
-  // Numer seryjny zależny od płci 
-
   let serial = Math.floor(Math.random() * 1000).toString().padStart(3, "0");
-
-  // Cyfra płci
   let sexDigit = sex === "m"
-    ? (Math.floor(Math.random() * 5) * 2 + 1) // losowa nieparzysta
-    : (Math.floor(Math.random() * 5) * 2);    // losowa parzysta
+    ? (Math.floor(Math.random() * 5) * 2 + 1)
+    : (Math.floor(Math.random() * 5) * 2);
 
   const base = yy + mmStr + ddStr + serial + sexDigit;
 
-  // Cyfra kontrolna
   const weights = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
   let sum = 0;
   for (let i = 0; i < 10; i++) {
@@ -167,12 +164,7 @@ function generatePesel(year, month, day, sex) {
   }
   const control = (10 - (sum % 10)) % 10;
 
-  const pesel = base + control;
-
-  return pesel;
-
-  var pesel = generatePesel(year, month, day, sex);
-setData("pesel", pesel);
+  return base + control;
 }
 
 
