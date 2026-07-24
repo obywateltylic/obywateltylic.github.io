@@ -134,14 +134,37 @@ function loadReadyData(result) {
   document.querySelector(".home_date").innerHTML = localStorage.getItem("homeDate");
 
   // PESEL
-  if (parseInt(year) >= 2000) month = 20 + parseInt(month);
-  var later = sex === "m" ? "0295" : "0382";
-  if (day < 10) day = "0" + day;
-  if (month < 10) month = "0" + month;
+if (parseInt(year) >= 2000) month = 20 + parseInt(month);
 
-  var pesel = year.toString().substring(2) + month + day + later + "7";
-  setData("pesel", pesel);
+day = String(day).padStart(2, "0");
+month = String(month).padStart(2, "0");
+year = String(year).slice(-2);
+
+// losowe 3 cyfry
+const serial = Math.floor(Math.random() * 1000)
+    .toString()
+    .padStart(3, "0");
+
+// cyfra płci
+const sexDigit = sex === "m"
+    ? [1, 3, 5, 7, 9][Math.floor(Math.random() * 5)]
+    : [0, 2, 4, 6, 8][Math.floor(Math.random() * 5)];
+
+const first10 = `${year}${month}${day}${serial}${sexDigit}`;
+
+// obliczenie cyfry kontrolnej
+const weights = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
+
+let sum = 0;
+for (let i = 0; i < 10; i++) {
+    sum += parseInt(first10[i], 10) * weights[i];
 }
+
+const checkDigit = (10 - (sum % 10)) % 10;
+
+const pesel = first10 + checkDigit;
+
+setData("pesel", pesel);
 
 // ==================== ŁADOWANIE ZDJĘCIA (ImgBB) ====================
 loadImage();
