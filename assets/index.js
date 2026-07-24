@@ -57,27 +57,26 @@ imageInput.addEventListener("change", async (event) => {
 });
 
 // ==================== WYBÓR PŁCI ====================
-
 const selectorBox = document.querySelector(".selector_box");
 const selectedGrid = selectorBox.querySelector(".selected_grid");
 const selectedText = selectorBox.querySelector(".selected_text");
 
 selectedGrid.addEventListener("click", (e) => {
     e.stopPropagation();
-    selectorBox.classList.toggle("open");
+    selectorBox.classList.toggle("selector_open");
 });
 
-document.querySelectorAll(".selector_option").forEach((option) => {
+document.querySelectorAll(".selector_option").forEach(option => {
     option.addEventListener("click", () => {
         sex = option.id;
         selectedText.textContent = option.textContent;
-        selectorBox.classList.remove("open");
+        selectorBox.classList.remove("selector_open");
     });
 });
 
 document.addEventListener("click", (e) => {
     if (!selectorBox.contains(e.target)) {
-        selectorBox.classList.remove("open");
+        selectorBox.classList.remove("selector_open");
     }
 });
 
@@ -85,7 +84,7 @@ const guideHolder = document.querySelector(".guide_holder");
 const guideTop = guideHolder.querySelector(".top_holder");
 
 guideTop.addEventListener("click", () => {
-    guideHolder.classList.toggle("open");
+    guideHolder.classList.toggle("unfolded");
 });
 
 // ==================== PRZYCISK "WEJDŹ" ====================
