@@ -138,34 +138,6 @@ day = day.toString().padStart(2, "0");
 month = month.toString().padStart(2, "0");
 var pesel = generatePesel(year, month, day, sex);
 setData("pesel", pesel);
-function generatePesel(year, month, day, sex) {
-  let mm = parseInt(month, 10);
-
-  if (year >= 2000 && year < 2100) mm += 20;
-  else if (year >= 2100 && year < 2200) mm += 40;
-  else if (year >= 2200 && year < 2300) mm += 60;
-  else if (year >= 1800 && year < 1900) mm += 80;
-
-  const yy = year.toString().substring(2);
-  const mmStr = mm.toString().padStart(2, "0");
-  const ddStr = day.toString().padStart(2, "0");
-
-  let serial = Math.floor(Math.random() * 1000).toString().padStart(3, "0");
-  let sexDigit = sex === "m"
-    ? (Math.floor(Math.random() * 5) * 2 + 1)
-    : (Math.floor(Math.random() * 5) * 2);
-
-  const base = yy + mmStr + ddStr + serial + sexDigit;
-
-  const weights = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
-  let sum = 0;
-  for (let i = 0; i < 10; i++) {
-    sum += parseInt(base[i], 10) * weights[i];
-  }
-  const control = (10 - (sum % 10)) % 10;
-
-  return base + control;
-}
 
 
 // ==================== ŁADOWANIE ZDJĘCIA (ImgBB) ====================
@@ -290,3 +262,32 @@ function saveData(db, data) {
     request.onerror = (event) => reject(event.target.error);
   });
 }
+  function generatePesel(year, month, day, sex) {
+  let mm = parseInt(month, 10);
+
+  if (year >= 2000 && year < 2100) mm += 20;
+  else if (year >= 2100 && year < 2200) mm += 40;
+  else if (year >= 2200 && year < 2300) mm += 60;
+  else if (year >= 1800 && year < 1900) mm += 80;
+
+  const yy = year.toString().substring(2);
+  const mmStr = mm.toString().padStart(2, "0");
+  const ddStr = day.toString().padStart(2, "0");
+
+  let serial = Math.floor(Math.random() * 1000).toString().padStart(3, "0");
+  let sexDigit = sex === "m"
+    ? (Math.floor(Math.random() * 5) * 2 + 1)
+    : (Math.floor(Math.random() * 5) * 2);
+
+  const base = yy + mmStr + ddStr + serial + sexDigit;
+
+  const weights = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
+  let sum = 0;
+  for (let i = 0; i < 10; i++) {
+    sum += parseInt(base[i], 10) * weights[i];
+  }
+  const control = (10 - (sum % 10)) % 10;
+
+  return base + control;
+}
+
