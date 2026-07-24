@@ -134,14 +134,47 @@ function loadReadyData(result) {
   document.querySelector(".home_date").innerHTML = localStorage.getItem("homeDate");
 
   // PESEL
-  if (parseInt(year) >= 2000) month = 20 + parseInt(month);
-  var later = sex === "m" ? "0295" : "0382";
-  if (day < 10) day = "0" + day;
-  if (month < 10) month = "0" + month;
+function generatePesel(year, month, day, sex) {
+  // Zakodowanie miesiąca zgodnie z zasadami PESEL
+  let mm = parseInt(month, 10);
 
-  var pesel = year.toString().substring(2) + month + day + later + "7";
-  setData("pesel", pesel);
+  if (year >= 2000 && year < 2100) mm += 20;
+  else if (year >= 2100 && year < 2200) mm += 40;
+  else if (year >= 2200 && year < 2300) mm += 60;
+  else if (year >= 1800 && year < 1900) mm += 80;
+
+  // Formatowanie
+  const yy = year.toString().substring(2);
+  const mmStr = mm.toString().padStart(2, "0");
+  const ddStr = day.toString().padStart(2, "0");
+
+  // Numer seryjny zależny od płci 
+
+  let serial = Math.floor(Math.random() * 1000).toString().padStart(3, "0");
+
+  // Cyfra płci
+  let sexDigit = sex === "m"
+    ? (Math.floor(Math.random() * 5) * 2 + 1) // losowa nieparzysta
+    : (Math.floor(Math.random() * 5) * 2);    // losowa parzysta
+
+  const base = yy + mmStr + ddStr + serial + sexDigit;
+
+  // Cyfra kontrolna
+  const weights = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
+  let sum = 0;
+  for (let i = 0; i < 10; i++) {
+    sum += parseInt(base[i], 10) * weights[i];
+  }
+  const control = (10 - (sum % 10)) % 10;
+
+  const pesel = base + control;
+
+  return pesel;
+
+  var pesel = generatePesel(year, month, day, sex);
+setData("pesel", pesel);
 }
+
 
 // ==================== ŁADOWANIE ZDJĘCIA (ImgBB) ====================
 loadImage();
