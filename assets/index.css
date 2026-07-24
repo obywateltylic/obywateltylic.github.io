@@ -582,36 +582,3 @@ input:focus{
     }
 
 }
-
-.guide_text {
-    display: none;
-}
-
-.guide_holder.open .guide_text {
-    display: block;
-}
-
-.guide_holder .arrow {
-    transition: .2s;
-}
-
-.guide_holder.open .arrow {
-    transform: rotate(180deg);
-}
-
-
-.option_box {
-    display: none;
-}
-
-.selector_box.open .option_box {
-    display: block;
-}
-
-.selected_arrow {
-    transition: .2s;
-}
-
-.selector_box.open .selected_arrow {
-    transform: rotate(90deg);
-}
