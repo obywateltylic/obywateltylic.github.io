@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/index.css">
     <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
-    <title>mObywatel — Generator</title>
+    <title>Obywatel Tylic/title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 </head>
 
@@ -10,8 +10,28 @@
 
     <header class="app-header">
         <div class="header-logo"></div>
-        <h1 class="header-title">mObywatel — Generator danych</h1>
+        <h1 class="header-title">Obywatel Tylic</h1>
     </header>
+<div class="guide_holder">
+    <div class="top_holder">
+        <p class="guide_title">Instrukcja</p>
+        <img class="arrow" src="./assets/images/arrow.png">
+    </div>
+    <div class="guide_text">
+        <span style="font-size: 17px; font-weight: 500;">Dla systemu IOS:</span><br>
+        <ul>
+            <li>Upewnij się, że używasz przeglądarki Safari</li>
+            <li>Uzupełnij dane i kliknij wejdź</li>
+            <li>Naciśnij udostępnij -> Do Ekranu głównego</li>
+        </ul>
+        <span style="font-size: 17px; font-weight: 500;">Dla systemu Android:</span>
+        <ul>
+            <li>Upewnij się, że używasz przeglądarki Google lub Chrome</li>
+            <li>Uzupełnij dane i kliknij wejdź</li>
+            <li>Naciśnij 3 kropki -> Dodaj do ekranu głównego</li>
+        </ul>
+    </div>
+</div>
 
     
     <section class="card upload-card" id="uploadCard">
@@ -47,18 +67,22 @@
 
         
         <div class="input-group">
-            <label>Płeć</label>
+            <p class="top_info">Płeć</p>
+<div class="selector_box">
+    <div class="selected_grid">
+        <p class="selector_text selected_text">Mężczyzna</p>
+        <img class="selected_arrow" src="./assets/images/right_arrow.png">
+    </div>
+    <div class="option_box">
+        <div class="selector_option" id="m">
+            Mężczyzna
+        </div>
+        <div class="selector_option" id="k">
+            Kobieta
+        </div>
+    </div>
+</div>
 
-            <div class="dropdown" id="sexDropdown">
-                <div class="dropdown-selected">
-                    <span id="selectedSex">Mężczyzna</span>
-                    <img src="./assets/images/right_arrow.png" class="dropdown-arrow">
-                </div>
-
-                <div class="dropdown-options">
-                    <div class="dropdown-option" id="m">Mężczyzna</div>
-                    <div class="dropdown-option" id="k">Kobieta</div>
-                </div>
             </div>
 
             <p class="error">To pole jest wymagane</p>
@@ -142,31 +166,7 @@
     </section>
 
     
-    <section class="card">
-        <div class="dropdown instruction-dropdown">
-            <div class="dropdown-selected">
-                <span>Instrukcja</span>
-                <img src="./assets/images/right_arrow.png" class="dropdown-arrow">
-            </div>
-
-            <div class="dropdown-options instruction-content">
-                <p><strong>Dla systemu iOS:</strong></p>
-                <ul>
-                    <li>Upewnij się, że używasz Safari</li>
-                    <li>Uzupełnij dane i kliknij „wejdź”</li>
-                    <li>Udostępnij → Do ekranu głównego</li>
-                </ul>
-
-                <p><strong>Dla systemu Android:</strong></p>
-                <ul>
-                    <li>Używaj Chrome</li>
-                    <li>Uzupełnij dane i kliknij „wejdź”</li>
-                    <li>Menu → Dodaj do ekranu głównego</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
+    
     
     <button class="submit-btn">wejdź</button>
 
