@@ -138,7 +138,7 @@ day = day.toString().padStart(2, "0");
 month = month.toString().padStart(2, "0");
 var pesel = generatePesel(year, month, day, sex);
 setData("pesel", pesel);
-
+}
 
 // ==================== ŁADOWANIE ZDJĘCIA (ImgBB) ====================
 loadImage();
