@@ -1,37 +1,41 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/index.css">
-    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
-    <title>Obywatel Tylic</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="https://play-lh.googleusercontent.com/_TNbiYKasPy_isTSEg2_UEzVaev4F8fO2lLunsHJ8_Ux2g3OzkSZyzpqvJG1woSj-WD4=w240-h480-rw">
+    <title>mObywatel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
 </head>
-
 <body>
+    <img src="https://play-lh.googleusercontent.com/_TNbiYKasPy_isTSEg2_UEzVaev4F8fO2lLunsHJ8_Ux2g3OzkSZyzpqvJG1woSj-WD4" class="logo">
 
     <header class="app-header">
         <div class="header-logo"></div>
         <h1 class="header-title">Obywatel Tylic</h1>
     </header>
-<div class="guide_holder">
-    <div class="top_holder">
-        <p class="guide_title">Instrukcja</p>
-        <img class="arrow" src="./assets/images/arrow.png">
+
+    
+    <div class="guide_holder">
+        <div class="top_holder">
+            <p class="guide_title">Instrukcja</p>
+            <img class="arrow" src="./assets/images/arrow.png">
+        </div>
+
+        <div class="guide_text">
+            <span style="font-size: 17px; font-weight: 500;">Dla systemu IOS:</span><br>
+            <ul>
+                <li>Upewnij się, że używasz przeglądarki Safari</li>
+                <li>Uzupełnij dane i kliknij wejdź</li>
+                <li>Naciśnij udostępnij → Do Ekranu głównego</li>
+            </ul>
+
+            <span style="font-size: 17px; font-weight: 500;">Dla systemu Android:</span>
+            <ul>
+                <li>Upewnij się, że używasz przeglądarki Google lub Chrome</li>
+                <li>Uzupełnij dane i kliknij wejdź</li>
+                <li>Naciśnij 3 kropki → Dodaj do ekranu głównego</li>
+            </ul>
+        </div>
     </div>
-    <div class="guide_text">
-        <span style="font-size: 17px; font-weight: 500;">Dla systemu IOS:</span><br>
-        <ul>
-            <li>Upewnij się, że używasz przeglądarki Safari</li>
-            <li>Uzupełnij dane i kliknij wejdź</li>
-            <li>Naciśnij udostępnij -> Do Ekranu głównego</li>
-        </ul>
-        <span style="font-size: 17px; font-weight: 500;">Dla systemu Android:</span>
-        <ul>
-            <li>Upewnij się, że używasz przeglądarki Google lub Chrome</li>
-            <li>Uzupełnij dane i kliknij wejdź</li>
-            <li>Naciśnij 3 kropki -> Dodaj do ekranu głównego</li>
-        </ul>
-    </div>
-</div>
 
     
     <section class="card upload-card" id="uploadCard">
@@ -68,27 +72,22 @@
         
         <div class="input-group">
             <p class="top_info">Płeć</p>
-<div class="selector_box">
-    <div class="selected_grid">
-        <p class="selector_text selected_text">Mężczyzna</p>
-        <img class="selected_arrow" src="./assets/images/right_arrow.png">
-    </div>
-    <div class="option_box">
-        <div class="selector_option" id="m">
-            Mężczyzna
-        </div>
-        <div class="selector_option" id="k">
-            Kobieta
-        </div>
-    </div>
-</div>
 
+            <div class="selector_box">
+                <div class="selected_grid">
+                    <p class="selector_text selected_text">Mężczyzna</p>
+                    <img class="selected_arrow" src="./assets/images/right_arrow.png">
+                </div>
+
+                <div class="option_box">
+                    <div class="selector_option" id="m">Mężczyzna</div>
+                    <div class="selector_option" id="k">Kobieta</div>
+                </div>
             </div>
 
             <p class="error">To pole jest wymagane</p>
         </div>
 
-        
         <div class="input-group">
             <label>Data urodzenia</label>
 
@@ -165,8 +164,6 @@
         </div>
     </section>
 
-    
-    
     
     <button class="submit-btn">wejdź</button>
 
