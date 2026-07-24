@@ -1,3 +1,5 @@
+console.log("NOWY INDEX.JS");
+alert("NOWY INDEX.JS");
 // ==================== ZMIENNE GLOBALNE ====================
 let sex = "m";                    // domyślnie mężczyzna
 
