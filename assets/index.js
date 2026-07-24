@@ -1,5 +1,4 @@
-console.log("NOWY INDEX.JS");
-alert("NOWY INDEX.JS");
+alert("Do użycia w celach edukacyjnych");
 // ==================== ZMIENNE GLOBALNE ====================
 let sex = "m";                    // domyślnie mężczyzna
 
