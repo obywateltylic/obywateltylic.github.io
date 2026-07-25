@@ -173,40 +173,18 @@
   <script src="assets/cache.js"></script>
 
   
-  <script>
-    const params = new URLSearchParams(window.location.search);
+ <script>
+  const params = new URLSearchParams(window.location.search);
 
-    
-    function generateLegitNumber() {
-      let num = "";
-      for (let i = 0; i < 8; i++) num += Math.floor(Math.random() * 10);
-      return "LS-" + num;
-    }
+  function setSchoolData() {
+    document.getElementById("school").innerHTML = params.get("school") || "";
+    document.getElementById("class").innerHTML = params.get("class") || "";
+    document.getElementById("schoolAddress").innerHTML = params.get("schoolAddress") || "";
+    document.getElementById("schoolPhone").innerHTML = params.get("schoolPhone") || "";
+    document.getElementById("director").innerHTML = params.get("director") || "";
+  }
 
-    
-    function setLegitDates() {
-      const today = new Date();
-      let schoolYear = today.getMonth() >= 8 ? today.getFullYear() : today.getFullYear() - 1;
+  setSchoolData();
+</script>
 
-      const given = new Date(schoolYear, 8, 25);
-      const expiry = new Date(schoolYear + 1, 8, 30);
-
-      document.getElementById("legitGivenDate").innerHTML = given.toLocaleDateString("pl-PL");
-      document.getElementById("legitExpiryDate").innerHTML = expiry.toLocaleDateString("pl-PL");
-    }
-
-    
-    function setSchoolData() {
-      document.getElementById("school").innerHTML = params.get("school") || "";
-      document.getElementById("class").innerHTML = params.get("class") || "";
-      document.getElementById("schoolAddress").innerHTML = params.get("schoolAddress") || "";
-      document.getElementById("schoolPhone").innerHTML = params.get("schoolPhone") || "";
-      document.getElementById("director").innerHTML = params.get("director") || "";
-    }
-
-    
-    document.getElementById("legitNumber").innerHTML = generateLegitNumber();
-    setLegitDates();
-    setSchoolData();
-  </script>
 </body>
