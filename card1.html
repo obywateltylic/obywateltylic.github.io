@@ -52,6 +52,7 @@
       <img draggable="false" class="id_image" src="assets/images/plate.png" />
       <div class="inset"></div>
       <div class="id_own_image"></div>
+
       <img draggable="false" src="assets/images/flag.webp" class="flag_video" />
       <img draggable="false" src="assets/images/eagle.gif" class="eagle_video" />
       <p class="eagle_text">Rzeczpospolita<br />Polska</p>
@@ -59,12 +60,12 @@
       <div class="id_data_grid">
 
         <div class="data_holder">
-          <p class="data_title" id="name"></p>
+          <p class="data_title firstname" id="name"></p>
           <p class="data_value">Imię (imiona)</p>
         </div>
 
         <div class="data_holder">
-          <p class="data_title" id="surname"></p>
+          <p class="data_title surname" id="surname"></p>
           <p class="data_value">Nazwisko</p>
         </div>
 
@@ -77,17 +78,19 @@
           <p class="data_title" id="pesel"></p>
           <p class="data_value">Numer PESEL</p>
         </div>
-
+        
         <div class="data_holder">
           <p class="data_title" id="legitNumber"></p>
           <p class="data_value">Numer legitymacji</p>
         </div>
 
+        
         <div class="data_holder">
           <p class="data_title" id="givenDate"></p>
           <p class="data_value">Data wydania</p>
         </div>
 
+        
         <div class="data_holder">
           <p class="data_title" id="expiryDate"></p>
           <p class="data_value">Termin ważności</p>
@@ -123,6 +126,7 @@
       </div>
     </div>
 
+    
     <div class="other_grid">
       <div class="bottom_holder info_holder">
         <div class="bottom_grid">
@@ -161,8 +165,7 @@
       </div>
     </div>
   </div>
-
-  
+    
   <script src="assets/encode.js"></script>
   <script src="assets/bar.js"></script>
   <script src="assets/card.js"></script>
@@ -203,11 +206,7 @@
 
     
     document.getElementById("legitNumber").innerHTML = generateLegitNumber();
-
-    
     setLegitDates();
-
-    
     setSchoolData();
   </script>
 </body>
