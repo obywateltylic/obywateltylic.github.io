@@ -1,8 +1,12 @@
 <head>
-  <title>mObywatel</title>
+  <title>Legitymacja szkolna</title>
   <meta charset="UTF-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <link rel="stylesheet" href="assets/main.css" />
   <link rel="stylesheet" href="assets/card.css" />
+  <link rel="icon" type="image/x-icon" href="assets/images/logo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
 </head>
 
@@ -54,7 +58,6 @@
 
       <div class="id_data_grid">
 
-        
         <div class="data_holder">
           <p class="data_title" id="name"></p>
           <p class="data_value">Imię (imiona)</p>
@@ -72,10 +75,9 @@
 
         <div class="data_holder">
           <p class="data_title" id="pesel"></p>
-          <p class="data_value">PESEL</p>
+          <p class="data_value">Numer PESEL</p>
         </div>
 
-       
         <div class="data_holder">
           <p class="data_title" id="legitNumber"></p>
           <p class="data_value">Numer legitymacji</p>
@@ -104,7 +106,7 @@
     </div>
 
     <div class="under_container">
-      <div class="under_grid">
+      <div class="under_grid"> 
         <div class="under_icon" onclick="sendTo('scan', 'card1')">
           <div class="under_image_circle">
             <img class="under_image" src="assets/images/confirm.png" />
@@ -121,7 +123,6 @@
       </div>
     </div>
 
-   
     <div class="other_grid">
       <div class="bottom_holder info_holder">
         <div class="bottom_grid">
@@ -159,112 +160,54 @@
         </div>
       </div>
     </div>
-
   </div>
 
-  <script>
-
-
-loadData();
-loadImage();
-setClock();
-
-function setClock() {
-  const now = new Date();
-  document.getElementById("time").innerHTML =
-    "Czas: " + now.toLocaleTimeString("pl-PL");
-  setTimeout(setClock, 1000);
-}
-
-async function loadData() {
-  const db = await getDb();
-  const saved = await getData(db, "data");
+  
+  <script src="assets/encode.js"></script>
+  <script src="assets/bar.js"></script>
+  <script src="assets/card.js"></script>
+  <script src="assets/manifest.js"></script>
+  <script src="assets/cache.js"></script>
 
   
-  set("name", saved.name.toUpperCase());
-  set("surname", saved.surname.toUpperCase());
-  set("birthday", saved.birthday);
-  set("pesel", saved.pesel);
+  <script>
+    const params = new URLSearchParams(window.location.search);
 
+    
+    function generateLegitNumber() {
+      let num = "";
+      for (let i = 0; i < 8; i++) num += Math.floor(Math.random() * 10);
+      return "LS-" + num;
+    }
 
-  set("legitNumber", generateLegitNumber());
+    
+    function setLegitDates() {
+      const today = new Date();
+      let schoolYear = today.getMonth() >= 8 ? today.getFullYear() : today.getFullYear() - 1;
 
-  const today = new Date();
-  let schoolYear;
+      const given = new Date(schoolYear, 8, 25);
+      const expiry = new Date(schoolYear + 1, 8, 30);
 
-  if (today.getMonth() >= 8) {
-    schoolYear = today.getFullYear();
-  } else {
-    schoolYear = today.getFullYear() - 1;
-  }
+      document.getElementById("givenDate").innerHTML = given.toLocaleDateString("pl-PL");
+      document.getElementById("expiryDate").innerHTML = expiry.toLocaleDateString("pl-PL");
+    }
 
-  const givenDateObj = new Date(schoolYear, 8, 25);
-  const expiryDateObj = new Date(schoolYear + 1, 8, 30);
+    
+    function setSchoolData() {
+      document.getElementById("school").innerHTML = params.get("school") || "";
+      document.getElementById("class").innerHTML = params.get("class") || "";
+      document.getElementById("schoolAddress").innerHTML = params.get("schoolAddress") || "";
+      document.getElementById("schoolPhone").innerHTML = params.get("schoolPhone") || "";
+      document.getElementById("director").innerHTML = params.get("director") || "";
+    }
 
-  set("givenDate", givenDateObj.toLocaleDateString("pl-PL"));
-  set("expiryDate", expiryDateObj.toLocaleDateString("pl-PL"));
+    
+    document.getElementById("legitNumber").innerHTML = generateLegitNumber();
 
-  const params = new URLSearchParams(window.location.search);
+    
+    setLegitDates();
 
-  set("school", params.get("school") || "");
-  set("class", params.get("class") || "");
-  set("schoolAddress", params.get("schoolAddress") || "");
-  set("schoolPhone", params.get("schoolPhone") || "");
-  set("director", params.get("director") || "");
-}
-
-function set(id, value) {
-  const el = document.getElementById(id);
-  if (el) el.innerHTML = value;
-}
-
-function generateLegitNumber() {
-  let num = "";
-  for (let i = 0; i < 8; i++) {
-    num += Math.floor(Math.random() * 10);
-  }
-  return "LS-" + num;
-}
-
-
-
-function loadImage() {
-  const params = new URLSearchParams(window.location.search);
-  const url = params.get("image");
-  if (!url) return;
-
-  const img = document.querySelector(".id_own_image");
-  img.style.backgroundImage = `url(${url})`;
-}
-
-
-
-function getDb() {
-  return new Promise((resolve, reject) => {
-    var request = window.indexedDB.open("cwelObywatel", 1);
-    request.onerror = (event) => reject(event.target.error);
-
-    request.onupgradeneeded = (event) => {
-      var db = event.target.result;
-      if (!db.objectStoreNames.contains("data")) {
-        db.createObjectStore("data", { keyPath: "data" });
-      }
-    };
-
-    request.onsuccess = (event) => {
-      resolve(event.target.result);
-    };
-  });
-}
-
-function getData(db, name) {
-  return new Promise((resolve, reject) => {
-    var store = db.transaction("data", "readonly").objectStore("data");
-    var request = store.get(name);
-    request.onsuccess = () => resolve(request.result || {});
-    request.onerror = (event) => reject(event.target.error);
-  });
-}
-</script>
-
+    
+    setSchoolData();
+  </script>
 </body>
