@@ -134,4 +134,7 @@
   margin-right: auto;
   opacity: 0.5;
 }
+.card + .card {
+    margin-top: 20px;
+}
 
