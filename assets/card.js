@@ -1,6 +1,7 @@
 // ==================== CARD.JS - WERSJA DLA IMGBB ====================
 
-var confirmElement = document.querySelector(".confirm");
+var confirmElement = document.querySelector(".confirm") || null;
+
 var time = document.getElementById("time");
 
 if (localStorage.getItem("update") == null) {
@@ -9,15 +10,21 @@ if (localStorage.getItem("update") == null) {
 
 var date = new Date();
 var updateText = document.querySelector(".bottom_update_value");
-updateText.innerHTML = localStorage.getItem("update");
+if (updateText) {
+  updateText.innerHTML = localStorage.getItem("update");
+}
+
 
 var update = document.querySelector(".update");
-update.addEventListener("click", () => {
-  var newDate = date.toLocaleDateString("pl-PL", options);
-  localStorage.setItem("update", newDate);
-  updateText.innerHTML = newDate;
-  scroll(0, 0);
-});
+if (update) {
+  update.addEventListener("click", () => {
+    var newDate = date.toLocaleDateString("pl-PL", options);
+    localStorage.setItem("update", newDate);
+    if (updateText) updateText.innerHTML = newDate;
+    scroll(0, 0);
+  });
+}
+
 
 setClock();
 
@@ -161,7 +168,11 @@ if (document.getElementById("legitExpiryDate")) {
     var homeDate = new Date(homeYear, homeMonth, homeDay);
     localStorage.setItem("homeDate", homeDate.toLocaleDateString("pl-PL", options));
   }
-  document.querySelector(".home_date").innerHTML = localStorage.getItem("homeDate");
+ var homeDateEl = document.querySelector(".home_date");
+if (homeDateEl) {
+  homeDateEl.innerHTML = localStorage.getItem("homeDate");
+}
+
 
   // PESEL
 day = day.toString().padStart(2, "0");
@@ -249,8 +260,12 @@ function setImage(src) {
 // ==================== POMOCNICZE FUNKCJE ====================
 
 function setData(id, value) {
-  document.getElementById(id).innerHTML = value;
+  const el = document.getElementById(id);
+  if (el) {
+    el.innerHTML = value;
+  }
 }
+
 
 function getDb() {
   return new Promise((resolve, reject) => {
