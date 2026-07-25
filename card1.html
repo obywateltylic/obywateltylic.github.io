@@ -86,13 +86,13 @@
 
         
         <div class="data_holder">
-          <p class="data_title" id="givenDate"></p>
+          <p class="data_title" id="legitGivenDate"></p>
           <p class="data_value">Data wydania</p>
         </div>
 
         
         <div class="data_holder">
-          <p class="data_title" id="expiryDate"></p>
+          <p class="data_title" id="legitExpiryDate"></p>
           <p class="data_value">Termin ważności</p>
         </div>
 
@@ -191,8 +191,8 @@
       const given = new Date(schoolYear, 8, 25);
       const expiry = new Date(schoolYear + 1, 8, 30);
 
-      document.getElementById("givenDate").innerHTML = given.toLocaleDateString("pl-PL");
-      document.getElementById("expiryDate").innerHTML = expiry.toLocaleDateString("pl-PL");
+      document.getElementById("legitGivenDate").innerHTML = given.toLocaleDateString("pl-PL");
+      document.getElementById("legitExpiryDate").innerHTML = expiry.toLocaleDateString("pl-PL");
     }
 
     
