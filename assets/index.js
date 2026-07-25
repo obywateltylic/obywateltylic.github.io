@@ -118,13 +118,24 @@ document.querySelector(".go").addEventListener("click", () => {
 
   document.querySelectorAll(".input_holder").forEach((element) => {
     var input = element.querySelector(".input");
+
+    
+    if (element.classList.contains("optional")) {
+        if (input.value.trim() !== "") {
+            params.set(input.id, input.value);
+        }
+        return;
+    }
+
+    
     if (isEmpty(input.value)) {
       empty.push(element);
       element.classList.add("error_shown");
     } else {
       params.set(input.id, input.value);
     }
-  });
+});
+
 
   if (empty.length > 0) {
     empty[0].scrollIntoView({ behavior: "smooth" });
