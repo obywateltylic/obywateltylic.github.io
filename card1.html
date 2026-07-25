@@ -1,12 +1,8 @@
 <head>
   <title>mObywatel</title>
   <meta charset="UTF-8" />
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
   <link rel="stylesheet" href="assets/main.css" />
   <link rel="stylesheet" href="assets/card.css" />
-  <link rel="icon" type="image/x-icon" href="assets/images/logo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
 </head>
 
@@ -56,16 +52,16 @@
       <img draggable="false" src="assets/images/eagle.gif" class="eagle_video" />
       <p class="eagle_text">Rzeczpospolita<br />Polska</p>
 
-    
       <div class="id_data_grid">
 
+        
         <div class="data_holder">
-          <p class="data_title firstname" id="name"></p>
+          <p class="data_title" id="name"></p>
           <p class="data_value">Imię (imiona)</p>
         </div>
 
         <div class="data_holder">
-          <p class="data_title surname" id="surname"></p>
+          <p class="data_title" id="surname"></p>
           <p class="data_value">Nazwisko</p>
         </div>
 
@@ -76,11 +72,12 @@
 
         <div class="data_holder">
           <p class="data_title" id="pesel"></p>
-          <p class="data_value">Numer PESEL</p>
+          <p class="data_value">PESEL</p>
         </div>
 
+       
         <div class="data_holder">
-          <p class="data_title" id="seriesAndNumber"></p>
+          <p class="data_title" id="legitNumber"></p>
           <p class="data_value">Numer legitymacji</p>
         </div>
 
@@ -107,7 +104,7 @@
     </div>
 
     <div class="under_container">
-      <div class="under_grid"> 
+      <div class="under_grid">
         <div class="under_icon" onclick="sendTo('scan', 'card1')">
           <div class="under_image_circle">
             <img class="under_image" src="assets/images/confirm.png" />
@@ -124,28 +121,46 @@
       </div>
     </div>
 
-    
-    <div class="confirm_info">
-      
-    </div>
-
+   
     <div class="other_grid">
       <div class="bottom_holder info_holder">
         <div class="bottom_grid">
-          <p class="bottom_text" style="color:#1f2125;margin-left:0px;">Twoje dodatkowe dane</p>
+          <p class="bottom_text" style="color:#1f2125;margin-left:0px;">Dane szkoły</p>
         </div>
         <img class="action_arrow" src="assets/images/right_arrow.png" />
 
         <div class="additional_holder">
-          
+
+          <div class="additional_grid">
+            <p class="additional_title">Szkoła</p>
+            <p class="additional_subtitle" id="school"></p>
+          </div>
+
+          <div class="additional_grid">
+            <p class="additional_title">Klasa</p>
+            <p class="additional_subtitle" id="class"></p>
+          </div>
+
+          <div class="additional_grid">
+            <p class="additional_title">Adres szkoły</p>
+            <p class="additional_subtitle" id="schoolAddress"></p>
+          </div>
+
+          <div class="additional_grid">
+            <p class="additional_title">Telefon szkoły</p>
+            <p class="additional_subtitle" id="schoolPhone"></p>
+          </div>
+
+          <div class="additional_grid" style="border-bottom:none;">
+            <p class="additional_title">Dyrektor</p>
+            <p class="additional_subtitle" id="director"></p>
+          </div>
+
         </div>
       </div>
     </div>
+
   </div>
 
-  <script src="assets/encode.js"></script>
-  <script src="assets/bar.js"></script>
   <script src="assets/card1.js"></script>
-  <script src="assets/manifest.js"></script>
-  <script src="assets/cache.js"></script>
 </body>
