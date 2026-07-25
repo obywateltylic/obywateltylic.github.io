@@ -124,6 +124,36 @@ function loadReadyData(result) {
   expiryDate.setFullYear(expiryDate.getFullYear() + 10);
   setData("expiryDate", expiryDate.toLocaleDateString("pl-PL", options));
 
+  // ==================== LEGITYMACJA SZKOLNA ====================
+
+// Numer legitymacji
+function generateLegitNumber() {
+  let num = "";
+  for (let i = 0; i < 8; i++) num += Math.floor(Math.random() * 10);
+  return "LS-" + num;
+}
+
+// Daty legitymacji
+const today = new Date();
+let schoolYear = today.getMonth() >= 8 ? today.getFullYear() : today.getFullYear() - 1;
+
+const legitGiven = new Date(schoolYear, 8, 25);
+const legitExpiry = new Date(schoolYear + 1, 8, 30);
+
+// Ustawianie danych — tylko jeśli element istnieje
+if (document.getElementById("legitNumber")) {
+  setData("legitNumber", generateLegitNumber());
+}
+
+if (document.getElementById("legitGivenDate")) {
+  setData("legitGivenDate", legitGiven.toLocaleDateString("pl-PL"));
+}
+
+if (document.getElementById("legitExpiryDate")) {
+  setData("legitExpiryDate", legitExpiry.toLocaleDateString("pl-PL"));
+}
+
+
   if (!localStorage.getItem("homeDate")) {
     var homeDay = getRandom(1, 25);
     var homeMonth = getRandom(0, 12);
