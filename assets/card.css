@@ -511,3 +511,7 @@ body .bottom_bar{
 .page_3_open .page_3{
     bottom: 0;
 }
+.card + .card {
+    margin-top: 20px;
+}
+
