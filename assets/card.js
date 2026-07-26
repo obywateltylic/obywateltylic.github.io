@@ -118,8 +118,9 @@ function loadReadyData(result) {
   setData("birthPlace", result["birthPlace"]);
   setData("countryOfBirth", result["countryOfBirth"]);
   setData(
-    "adress",
-    "ul. " + result["address1"] + "<br>" + result["address2"] + " " + result["city"]
+  "adress",
+  "ul. " + result["address1"] + "<br>" + result["address2"] + " " + result["city"]
+);
 
 
 if (result["school"]) setData("school", result["school"]);
@@ -127,7 +128,6 @@ if (result["schoolAddress"]) setData("schoolAddress", result["schoolAddress"]);
 if (result["schoolPhone"]) setData("schoolPhone", result["schoolPhone"]);
 if (result["director"]) setData("director", result["director"]);
 
-  );
 
   var givenDate = new Date(birthdayDate);
   givenDate.setFullYear(givenDate.getFullYear() + 18);
