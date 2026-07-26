@@ -104,6 +104,11 @@
             back.innerHTML = 'mDowód';
             back.onclick = () => {sendTo('card')};
         }
+        if (localStorage.getItem('top') === 'card1'){
+            var back = document.querySelector('.back_text_fixed');
+            back.innerHTML = 'mDowód';
+            back.onclick = () => {sendTo('card1')};
+        }
 
         function closeWarning() {
             document.querySelector('.warning-box').style.display = 'none';
