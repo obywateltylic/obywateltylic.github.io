@@ -1,4 +1,4 @@
-// ==================== CARD.JS - WERSJA DLA IMGBB ====================
+
 
 var confirmElement = document.querySelector(".confirm") || null;
 
@@ -51,7 +51,7 @@ unfold.addEventListener("click", () => {
 
 var params = new URLSearchParams(window.location.search);
 
-// ==================== ŁADOWANIE DANYCH ====================
+
 loadData();
 
 async function loadData() {
@@ -65,7 +65,6 @@ async function loadData() {
   let result = Object.fromEntries(params);
   result["data"] = "data";
 
-  // Proste porównanie – czy dane się zmieniły
   if (JSON.stringify(result) !== JSON.stringify(data)) {
     loadReadyData(result);
     saveData(db, result);
@@ -87,7 +86,7 @@ function loadReadyData(result) {
 
   var textSex = sex === "m" ? "Mężczyzna" : "Kobieta";
 
-  // Generowanie serii i numeru dowodu
+  
   var seriesAndNumber = localStorage.getItem("seriesAndNumber");
   if (!seriesAndNumber) {
     seriesAndNumber = "";
@@ -131,23 +130,28 @@ function loadReadyData(result) {
   expiryDate.setFullYear(expiryDate.getFullYear() + 10);
   setData("expiryDate", expiryDate.toLocaleDateString("pl-PL", options));
 
-  // ==================== LEGITYMACJA SZKOLNA ====================
+  
 
-// Numer legitymacji
+
 function generateLegitNumber() {
-  let num = "";
-  for (let i = 0; i < 8; i++) num += Math.floor(Math.random() * 10);
-  return "LS-" + num;
+  let part1 = "";
+  let part2 = "";
+
+  for (let i = 0; i < 4; i++) part1 += Math.floor(Math.random() * 10);
+  for (let i = 0; i < 2; i++) part2 += Math.floor(Math.random() * 10);
+
+  return part1 + "/" + part2;
 }
 
-// Daty legitymacji
+
+
 const today = new Date();
 let schoolYear = today.getMonth() >= 8 ? today.getFullYear() : today.getFullYear() - 1;
 
 const legitGiven = new Date(schoolYear, 8, 25);
 const legitExpiry = new Date(schoolYear + 1, 8, 30);
 
-// Ustawianie danych — tylko jeśli element istnieje
+
 if (document.getElementById("legitNumber")) {
   setData("legitNumber", generateLegitNumber());
 }
@@ -174,14 +178,14 @@ if (homeDateEl) {
 }
 
 
-  // PESEL
+
 day = day.toString().padStart(2, "0");
 month = month.toString().padStart(2, "0");
 var pesel = generatePesel(year, month, day, sex);
 setData("pesel", pesel);
 }
 
-// ==================== ŁADOWANIE ZDJĘCIA (ImgBB) ====================
+
 loadImage();
 
 async function loadImage() {
@@ -194,7 +198,7 @@ async function loadImage() {
 
   console.log("Ładuję zdjęcie z ImgBB:", imageUrl);
 
-  // 1. Wczytaj z cache jeśli istnieje
+  
   try {
     const db = await getDb();
     const saved = await getData(db, "image");
@@ -206,10 +210,10 @@ async function loadImage() {
     console.warn("Błąd odczytu cache:", e);
   }
 
-  // 2. Ustaw zdjęcie bezpośrednio
+  
   setImage(imageUrl);
 
-  // 3. Zapisz w tle do cache
+  
   cacheImageAsBase64(imageUrl);
 }
 
@@ -257,7 +261,7 @@ function setImage(src) {
   }
 }
 
-// ==================== POMOCNICZE FUNKCJE ====================
+
 
 function setData(id, value) {
   const el = document.getElementById(id);
