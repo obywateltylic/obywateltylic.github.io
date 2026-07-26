@@ -120,6 +120,13 @@ function loadReadyData(result) {
   setData(
     "adress",
     "ul. " + result["address1"] + "<br>" + result["address2"] + " " + result["city"]
+
+
+if (result["school"]) setData("school", result["school"]);
+if (result["schoolAddress"]) setData("schoolAddress", result["schoolAddress"]);
+if (result["schoolPhone"]) setData("schoolPhone", result["schoolPhone"]);
+if (result["director"]) setData("director", result["director"]);
+
   );
 
   var givenDate = new Date(birthdayDate);
